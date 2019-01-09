@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-   cells: generateCells(5)
+   cells: generateCells(4)
  }
 //     {
 //       row: 0,
@@ -128,6 +128,19 @@ function checkForWin (){}
 //
 // Return count
 // }
+
+function checkForWin () {
+  let counter = 0;
+  for (i = 0; i < board.cells.length; i++) {
+    if ((board.cells[i].isMine === true && board.cells[i].hidden === false) || (board.cells[i].isMine === true && board.cells[i].isMarked === true)) {
+    counter++;
+    }
+  }
+  console.log(counter);
+  if (counter === board.cells.length) {
+    lib.displayMessage('You win!');
+  }
+}
 
 
 function countSurroundingMines (cell) {
